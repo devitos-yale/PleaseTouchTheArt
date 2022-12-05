@@ -27,6 +27,7 @@ void loop() {
   Serial.println(p2);
   Serial.println(p3);
 
+
   if (buttonState1 == LOW) {
     // turn LED on:
     Serial.println("ONE");

@@ -19,12 +19,11 @@ int capSensePin7 = 7;
 int capSensePin8 = 6;
 int capSensePin9 = 5;
 int capSensePin10 = 4;
-int capSensePinTEST = 1;
 // This is how high the sensor needs to read in order
 //  to trigger a touch.  You'll find this number
 //  by trial and error, or you could take readings at 
 //  the start of the program to dynamically calculate this.
-int touchedCutoff = 60;
+int touchedCutoff = 100;
 
 void setup(){
   Serial.begin(9600);
@@ -45,8 +44,6 @@ void setup(){
 void loop(){
   // If the capacitive sensor reads above a certain threshold,
   //  turn on the LED
-  Serial.println(readCapacitivePin(capSensePin3));
-
   if ((readCapacitivePin(capSensePin) < touchedCutoff) && (readCapacitivePin(capSensePin2) < touchedCutoff) 
   && (readCapacitivePin(capSensePin3) < touchedCutoff) && (readCapacitivePin(capSensePin4) < touchedCutoff) 
   && (readCapacitivePin(capSensePin5) < touchedCutoff) && (readCapacitivePin(capSensePin6) < touchedCutoff) 
@@ -55,57 +52,84 @@ void loop(){
     strip.clear();
     strip.show();
   }
+  if ((readCapacitivePin(capSensePin) > touchedCutoff) && (readCapacitivePin(capSensePin2) > touchedCutoff) 
+  && (readCapacitivePin(capSensePin3) > touchedCutoff) && (readCapacitivePin(capSensePin4) > touchedCutoff) 
+  && (readCapacitivePin(capSensePin5) > touchedCutoff) && (readCapacitivePin(capSensePin6) > touchedCutoff) 
+  && (readCapacitivePin(capSensePin7) > touchedCutoff) && (readCapacitivePin(capSensePin8) > touchedCutoff) 
+  && (readCapacitivePin(capSensePin9) > touchedCutoff) && (readCapacitivePin(capSensePin10) > touchedCutoff)) {
+    rainbow(10);
+  }
   
   if (readCapacitivePin(capSensePin) > touchedCutoff) {
-    //Serial.println("ONE");
-    strip.setPixelColor(41, strip.Color(  0, 255,   0));         //  Set pixel's color (in RAM)
-    strip.show();
+    Serial.println("ONE");
+    for(int i=36; i<47; i++) { // For each pixel in strip...
+      strip.setPixelColor(i, strip.Color(  255, 0,   0));         //  Set pixel's color (in RAM)
+      strip.show();                          //  Update strip to match                          //  Pause for a moment
+    }
   }
 
   if (readCapacitivePin(capSensePin2) > touchedCutoff) {
-    //Serial.println("TWO");
-    strip.setPixelColor(53, strip.Color(  255, 0,   0));         //  Set pixel's color (in RAM)
-    strip.show();
+    Serial.println("TWO");
+    for(int i=47; i<55; i++) { // For each pixel in strip...
+      strip.setPixelColor(i, strip.Color(  0, 255,   0));         //  Set pixel's color (in RAM)
+      strip.show();                          //  Update strip to match                          //  Pause for a moment
+    }
   }
   if (readCapacitivePin(capSensePin3) > touchedCutoff) {
-    //Serial.println("THREE");
-    strip.setPixelColor(32, strip.Color(  0, 0,   255));         //  Set pixel's color (in RAM)
-    strip.show();
+    Serial.println("THREE");
+    for(int i=25; i<36; i++) { // For each pixel in strip...
+      strip.setPixelColor(i, strip.Color(  0, 127,   255));         //  Set pixel's color (in RAM)
+      strip.show();                          //  Update strip to match                          //  Pause for a moment
+    }
   }
   if (readCapacitivePin(capSensePin4) > touchedCutoff) {
-    //Serial.println("FOUR");
-    strip.setPixelColor(19, strip.Color(  0, 255,   0));         //  Set pixel's color (in RAM)
-    strip.show();
+    Serial.println("FOUR");
+    for(int i=16; i<25; i++) { // For each pixel in strip...
+      strip.setPixelColor(i, strip.Color(  0, 255,   127));         //  Set pixel's color (in RAM)
+      strip.show();                          //  Update strip to match                          //  Pause for a moment
+    }
   }
   if (readCapacitivePin(capSensePin5) > touchedCutoff) {
-    //Serial.println("FIVE");
-    strip.setPixelColor(57, strip.Color(  0, 0,   255));         //  Set pixel's color (in RAM)
-    strip.show();
+    Serial.println("FIVE");
+    for(int i=55; i<61; i++) { // For each pixel in strip...
+      strip.setPixelColor(i, strip.Color(  127, 0,   255));         //  Set pixel's color (in RAM)
+      strip.show();                          //  Update strip to match                          //  Pause for a moment
+    }
   }
   if (readCapacitivePin(capSensePin6) > touchedCutoff) {
-    //Serial.println("SIX");
-    strip.setPixelColor(13, strip.Color(  255, 0,   0));         //  Set pixel's color (in RAM)
-    strip.show();
+    Serial.println("SIX");
+    for(int i=9; i<16; i++) { // For each pixel in strip...
+      strip.setPixelColor(i, strip.Color(  255, 127,   0));         //  Set pixel's color (in RAM)
+      strip.show();                          //  Update strip to match                          //  Pause for a moment
+    }
   }
   if (readCapacitivePin(capSensePin7) > touchedCutoff) {
-    //Serial.println("SEVEN");
-    strip.setPixelColor(65, strip.Color(  0, 255,   0));         //  Set pixel's color (in RAM)
-    strip.show();
+    Serial.println("SEVEN");
+    for(int i=61; i<71; i++) { // For each pixel in strip...
+      strip.setPixelColor(i, strip.Color(  255, 255,   0));         //  Set pixel's color (in RAM)
+      strip.show();                          //  Update strip to match                          //  Pause for a moment
+    }
   }
   if (readCapacitivePin(capSensePin8) > touchedCutoff) {
-    //Serial.println("EIGHT");
-    strip.setPixelColor(5, strip.Color(  0, 0,   255));         //  Set pixel's color (in RAM)
-    strip.show();
+    Serial.println("EIGHT");
+    for(int i=0; i<9; i++) { // For each pixel in strip...
+      strip.setPixelColor(i, strip.Color(  0, 0,   255));         //  Set pixel's color (in RAM)
+      strip.show();                          //  Update strip to match                          //  Pause for a moment
+    }
   }
   if (readCapacitivePin(capSensePin9) > touchedCutoff) {
-    //Serial.println("NINE");
-    strip.setPixelColor(76, strip.Color(  255, 0,   0));         //  Set pixel's color (in RAM)
-    strip.show();
+    Serial.println("NINE");
+    for(int i=71; i<80; i++) { // For each pixel in strip...
+      strip.setPixelColor(i, strip.Color(  0, 255,   255));         //  Set pixel's color (in RAM)
+      strip.show();                          //  Update strip to match                          //  Pause for a moment
+    }
   }
   if (readCapacitivePin(capSensePin10) > touchedCutoff) {
-    //Serial.println("TEN");
-    strip.setPixelColor(85, strip.Color(  0, 255,   0));         //  Set pixel's color (in RAM)
-    strip.show();
+    Serial.println("TEN");
+    for(int i=80; i<91; i++) { // For each pixel in strip...
+      strip.setPixelColor(i, strip.Color(  127, 255,   0));         //  Set pixel's color (in RAM)
+      strip.show();                          //  Update strip to match                          //  Pause for a moment
+    }
   }
 
   // Every 500 ms, print the value of the capacitive sensor
@@ -150,6 +174,7 @@ uint8_t readCapacitivePin(int pinToMeasure){
   *port &= ~(bitmask);
   *ddr  |= bitmask;
   delay(1);
+
   // Make the pin an input WITHOUT the internal pull-up on
   *ddr &= ~(bitmask);
   // Now see how long the pin to get pulled up
@@ -180,3 +205,10 @@ void colorWipe(uint32_t color, int wait) {
   }
 }
 
+void rainbow(int wait) {
+  for(long firstPixelHue = 0; firstPixelHue < 2*65536; firstPixelHue += 256) {
+    strip.rainbow(firstPixelHue);
+    strip.show(); // Update strip with new contents
+    delay(wait);  // Pause for a moment
+  }
+}

@@ -26,7 +26,7 @@ void setup() {
   pinMode(16, INPUT_PULLUP);
 
   pinMode(11, OUTPUT);
-  //waitForSuperCollider();
+  waitForSuperCollider();
 }
 
 void loop() {
@@ -68,7 +68,6 @@ void loop() {
   p3b = p3a;
   p3a = p3;
 
-  /*
   if (Serial.available() > 0) {
     Serial.read();
     Serial.print(movement1);
@@ -91,8 +90,8 @@ void loop() {
     Serial.print(",");
     Serial.println(buttonState4); //end of data line
   }
-  */
 
+/*
   Serial.println(p1);
   Serial.println(p2);
   Serial.println(p3);
@@ -113,6 +112,7 @@ void loop() {
     // turn LED on:
     Serial.println("FOUR");
   } 
+*/
 }
 
 void waitForSuperCollider() {
@@ -122,4 +122,31 @@ void waitForSuperCollider() {
     delay(300);
   }
 }
+
+
+
+
+
+
+/*
+buttons constantly sending zero (amplitude) until they are pressed, then send 1? for amp
+just an action, not a routine
+use busses, lag them to smooth light code
+delay(50) in arduino code
+
+sclang and add file as argument, have it in rc local
+SC code gets run through a one liner added to bash rc
+wrap SC doc in a wait for boot statemnet (s.waitforboot at top)
+inside ASC doc, have vars and synthdef and s.sink statement, then have any code that instantiates synths
+initializes seven busses to 0 (so values can be pulled at control wait)
+synth.new ... under that is arduino.action which takes message input
+everytime you are getting a message you are writing to the bus
+reading from the busses in the synthdef
+can also lag amp/buttons
+
+FMgen quark from scott's github, auto generates random fm quarks, get rid of plonk envelope, in.linen
+
+using SC on pi (terminal?)
+nicer sound
+*/
 
